@@ -6,7 +6,7 @@ var handleDomo = function handleDomo(e) {
     width: 'hide'
   }, 350);
 
-  if ($("#domoName").val() == '' || $("#domoAge").val() == '') {
+  if ($("#domoName").val() == '' || $("#domoAge").val() == '' || $("#domoCountry").val() == '') {
     handleError("RAWR! All fields are required");
     console.log("Maker.js handleDomo -> Empty field called");
     return false;
@@ -40,6 +40,13 @@ var DomoForm = function DomoForm(props) {
       type: "text",
       name: "age",
       placeholder: "Domo Age"
+    }), /*#__PURE__*/React.createElement("label", {
+      htmlFor: "country"
+    }, "Country: "), /*#__PURE__*/React.createElement("input", {
+      id: "domoCountry",
+      type: "text",
+      name: "country",
+      placeHolder: "Domo Country"
     }), /*#__PURE__*/React.createElement("input", {
       type: "hidden",
       name: "_csrf",
@@ -74,7 +81,9 @@ var DomoList = function DomoList(props) {
         className: "domoName"
       }, " Name: ", domo.name), /*#__PURE__*/React.createElement("h3", {
         className: "domoAge"
-      }, " Age: ", domo.age))
+      }, " Age: ", domo.age), /*#__PURE__*/React.createElement("h3", {
+        className: "domoCountry"
+      }, " Country: ", domo.country))
     );
   });
   return (/*#__PURE__*/React.createElement("div", {
