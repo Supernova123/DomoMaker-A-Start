@@ -28,15 +28,18 @@ const getDomos = (request, response) => {
 };
 
 const makeDomo = (req, res) => {
-  if (!req.body.name || !req.body.age || !req.body.country) {
+  if (!req.body.name || !req.body.species || !req.body.color) {
     console.log('Domo.js makeDomo -> All fields are required called');
-    return res.status(400).json({ error: 'RAWR! Both name and age are required' });
+    return res.status(400).json({ error: 'RAWR! All fields are required' });
   }
+  /*
+  Error code for max number of Domos
+  */
 
   const domoData = {
     name: req.body.name,
-    age: req.body.age,
-    country: req.body.country,
+    species: req.body.species,
+    color: req.body.color,
     owner: req.session.account._id,
   };
 

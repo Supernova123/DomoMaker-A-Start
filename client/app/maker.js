@@ -3,9 +3,15 @@ const handleDomo = (e) => {
     
     $("#domoMessage").animate({width:'hide'},350);
     
-    if($("#domoName").val() == '' || $("#domoAge").val() == '' || $("#domoCountry").val() == '') {
+    if($("#domoName").val() == '' || $("#domoSpecies").val() == '' || $("#domoColor").val() == '') {
         handleError("RAWR! All fields are required");
-        console.log("Maker.js handleDomo -> Empty field called")
+        console.log("Maker.js handleDomo -> Empty field called");
+        return false;
+    }
+    
+    if($(".domoList").length() >= 6) {
+        handleError("RAWR! Only 6 toons to an account!");
+        console.log("Maker.js handleDomo -> Max toon limit called");
         return false;
     }
     
@@ -29,10 +35,10 @@ const DomoForm = (props) => {
             
             <label htmlFor="name">Name: </label>
             <input id="domoName" type="text" name="name" placeHolder="Domo Name"/>
-            <label htmlFor="age">Age: </label>
-            <input id="domoAge" type="text" name="age" placeholder="Domo Age"/>
-            <label htmlFor="country">Country: </label>
-            <input id="domoCountry" type="text" name="country" placeHolder="Domo Country"/>
+            <label htmlFor="species">Species: </label>
+            <input id="domoSpecies" type="text" name="species" placeholder="Domo Species"/>
+            <label htmlFor="color">Color: </label>
+            <input id="domoColor" type="text" name="color" placeHolder="Domo Color"/>
             <input type="hidden" name="_csrf" value={props.csrf} />
             <input className="makeDomoSubmit" type="submit" value="Make Domo" />
     </form>
@@ -53,8 +59,8 @@ const DomoList = function(props) {
             <div key={domo._id} className="domo">
                 <img src="/assets/img/domoface.jpeg" alt="domo face" className="domoFace" />
                 <h3 className="domoName"> Name: {domo.name}</h3>
-                <h3 className="domoAge"> Age: {domo.age}</h3>
-                <h3 className="domoCountry"> Country: {domo.country}</h3>
+                <h3 className="domoSpecies"> Species: {domo.species}</h3>
+                <h3 className="domoColor"> Color: {domo.color}</h3>
             </div>
         );
     });

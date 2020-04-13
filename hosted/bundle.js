@@ -6,7 +6,7 @@ var handleDomo = function handleDomo(e) {
     width: 'hide'
   }, 350);
 
-  if ($("#domoName").val() == '' || $("#domoAge").val() == '' || $("#domoCountry").val() == '') {
+  if ($("#domoName").val() == '' || $("#domoSpecies").val() == '' || $("#domoColor").val() == '') {
     handleError("RAWR! All fields are required");
     console.log("Maker.js handleDomo -> Empty field called");
     return false;
@@ -34,19 +34,19 @@ var DomoForm = function DomoForm(props) {
       name: "name",
       placeHolder: "Domo Name"
     }), /*#__PURE__*/React.createElement("label", {
-      htmlFor: "age"
-    }, "Age: "), /*#__PURE__*/React.createElement("input", {
-      id: "domoAge",
+      htmlFor: "species"
+    }, "Species: "), /*#__PURE__*/React.createElement("input", {
+      id: "domoSpecies",
       type: "text",
-      name: "age",
-      placeholder: "Domo Age"
+      name: "species",
+      placeholder: "Domo Species"
     }), /*#__PURE__*/React.createElement("label", {
-      htmlFor: "country"
-    }, "Country: "), /*#__PURE__*/React.createElement("input", {
-      id: "domoCountry",
+      htmlFor: "color"
+    }, "Color: "), /*#__PURE__*/React.createElement("input", {
+      id: "domoColor",
       type: "text",
-      name: "country",
-      placeHolder: "Domo Country"
+      name: "color",
+      placeHolder: "Domo Color"
     }), /*#__PURE__*/React.createElement("input", {
       type: "hidden",
       name: "_csrf",
@@ -80,10 +80,10 @@ var DomoList = function DomoList(props) {
       }), /*#__PURE__*/React.createElement("h3", {
         className: "domoName"
       }, " Name: ", domo.name), /*#__PURE__*/React.createElement("h3", {
-        className: "domoAge"
-      }, " Age: ", domo.age), /*#__PURE__*/React.createElement("h3", {
-        className: "domoCountry"
-      }, " Country: ", domo.country))
+        className: "domoSpecies"
+      }, " Species: ", domo.species), /*#__PURE__*/React.createElement("h3", {
+        className: "domoColor"
+      }, " Color: ", domo.color))
     );
   });
   return (/*#__PURE__*/React.createElement("div", {

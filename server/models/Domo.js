@@ -8,7 +8,8 @@ let DomoModel = {};
 // mongoos.Types.ObjectID converts stringID to real MongoID
 const convertId = mongoose.Types.ObjectId;
 const setName = (name) => _.escape(name).trim();
-const setCountry = (country) => _.escape(country).trim();
+const setSpecies = (species) => _.escape(species).trim();
+const setColor = (color) => _.escape(color).trim();
 
 const DomoSchema = new mongoose.Schema({
   name: {
@@ -18,17 +19,18 @@ const DomoSchema = new mongoose.Schema({
     set: setName,
   },
 
-  age: {
-    type: Number,
-    min: 0,
+  species: {
+    type: String,
     required: true,
+    trim: true,
+    set: setSpecies,
   },
-    
-  country: {
-      type: String,
-      required: true,
-      trim: true,
-      set: setCountry
+
+  color: {
+    type: String,
+    required: true,
+    trim: true,
+    set: setColor,
   },
 
   owner: {
@@ -45,8 +47,8 @@ const DomoSchema = new mongoose.Schema({
 
 DomoSchema.statics.toAPI = (doc) => ({
   name: doc.name,
-  age: doc.age,
-  country: doc.country,
+  species: doc.species,
+  color: doc.color,
 });
 
 DomoSchema.statics.findByOwner = (ownerId, callback) => {
@@ -54,7 +56,7 @@ DomoSchema.statics.findByOwner = (ownerId, callback) => {
     owner: convertId(ownerId),
   };
 
-  return DomoModel.find(search).select('name age country').lean().exec(callback);
+  return DomoModel.find(search).select('name species color').lean().exec(callback);
 };
 
 DomoModel = mongoose.model('Domo', DomoSchema);
